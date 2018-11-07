@@ -1,4 +1,4 @@
-# 使用 Docker 快速搭建 lanmp 环境
+# 使用 Docker 快速搭建 danmp 环境
 
 运行环境集成了apache + nginx + mysql + php
 
