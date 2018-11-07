@@ -106,13 +106,16 @@ docker-compose logs 72
 4. 进入到某个服务
 
 ```
-docker-compose exec apache bash   //进入apache服务的命令
+//进入apache服务的命令
+docker-compose exec apache bash
 ```
 5. 使用php的composer和php命令
 
 ```
-docker-compose exec php72 composer  //使用php72服务的composer命令
-docker-compose exec php72 php -v   //使用php72服务的php命令行工具
+//使用php72服务的composer命令
+暂未安装 请用compose容器服务
+//使用php72服务的php命令行工具
+docker-compose exec php72 php -v  
 ```
 #portainer
 portainer docker的gui管理工具  （localhost:9000）
