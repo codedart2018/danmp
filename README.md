@@ -34,11 +34,11 @@ git clone https://gitee.com/myxingke/danmp.git
 ### 第二步 修改php运行挂载目录
 由于是我自己在使用我默认挂载的是我本机地址，你需要修改一下或者换成你本地的www目录
 
-### 第二步，启动运行
-
+### 第三步，启动运行
 ```
 cd danmp
-docker-compose up -d   //创建容器
+//创建容器
+docker-compose up -d
 ```
 
 ### 第四步，启动运行
