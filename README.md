@@ -2,7 +2,7 @@
 
 运行环境集成了apache + nginx + mysql + php
 
-## 目录结构
+### 目录结构
 
 ```markdown
 conf   配置文件的目录，包括
@@ -57,7 +57,7 @@ docker-compose up -d
 XXXXX
 ```
 
-#关于PHP CURL
+### 关于PHP CURL
 配置php72 or php56 里的extra_host 关于IP 在.evn的配置里
 ```
     extra_hosts:
@@ -73,7 +73,7 @@ XXXXX
 重启过后 www.site.com ---> curl www.site1.cn
 
 
-#php 已安装扩展
+### php 已安装扩展
 bcmath \
 calendar \
 Core \
@@ -135,7 +135,7 @@ zlib \
 Xdebug \
 Zend OPcache
 
-#php dockerfile 编译文件
+### php dockerfile 编译文件
 [链接地址](https://gitee.com/myxingke/php7.2.11-dockerfile "链接地址")
 
 
@@ -186,5 +186,5 @@ docker-compose exec apache bash
 //使用php72服务的php命令行工具
 docker-compose exec php72 php -v  
 ```
-#portainer
+### portainer
 portainer docker的gui管理工具  （localhost:9000）
