@@ -1,37 +1,102 @@
-# danmp
+# 使用 Docker 快速搭建 lanmp 环境
 
-#### 项目介绍
-# 使用 Docker 快速搭建 linux apache nginx mysql php 环境
+运行环境集成了apache + nginx + mysql + php
 
-#### 软件架构
-软件架构说明
+## 目录结构
 
+```markdown
+conf   配置文件的目录，包括
+conf/apache/extra/httpd-vhosts.conf 配置虚拟主机的文件
+conf/apache/extra/httpd-ssl.conf 配置https的主机的文件
+conf/nginx/conf.d/demo.conf 配置nginx的主机的文件， 也可以新加文件，但是后缀以.conf结尾
 
-#### 安装教程
+data 数据目录 
+    --- mysql mysql数据目录 
+    --- portainer portainer数据目录
 
-1. xxxx
-2. xxxx
-3. xxxx
+log 日志目录
+    --- apache apache日志目录
+    --- nginx  nginx日志目录
+    --- php-fpm php-fpm日志目录
 
-#### 使用说明
+www    网站的根目录
+docker-compose.yml  容器的编排工具
+.evn   变量文件
 
-1. xxxx
-2. xxxx
-3. xxxx
+```
 
-#### 参与贡献
+### 第一步，获取项目代码
 
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+```
+git clone https://gitee.com/myxingke/danmp.git
+```
 
+### 第二步，启动运行
 
-#### 码云特技
+```
+cd danmp
+docker-compose up -d   //创建容器
+```
 
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### 第四步，启动运行
+
+测试nginx：
+- http://localhost
+- https://localhost
+
+测试apache：
+- http://localhost :8080
+- https://localhost:4343
+
+如果访问出现以下内容，说明环境搭建成功成功后将会出现如下内容
+```markdown
+欢迎使用DANMP！
+XXXXX
+```
+
+## 容器相关命令管理
+
+1. 查看运行的容器
+
+```
+//如果state的状态为up 说明容器启动成功
+docker-compose ps
+```
+2. 启动、重启、停止 服务
+
+```
+//启动所有服务
+docker-compose  start
+//停止所有服务
+docker-compose  stop
+//重启所有服务
+docker-compose restart
+```
+3. 查看服务的日志
+
+```
+//查看所有服务的日志
+docker-compose logs
+//查看nginx的服务日志
+docker-compose logs nginx
+//查看apache
+docker-compose logs apache
+//查看mysql
+docker-compose logs mysql
+//查看php72
+docker-compose logs 72
+```
+
+4. 进入到某个服务
+
+```
+docker-compose exec apache bash   //进入apache服务的命令
+```
+5. 使用php的composer和php命令
+
+```
+docker-compose exec php72 composer  //使用php72服务的composer命令
+docker-compose exec php72 php -v   //使用php72服务的php命令行工具
+```
+#portainer
+portainer docker的gui管理工具  （localhost:9000）
