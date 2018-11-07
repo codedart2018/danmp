@@ -70,6 +70,69 @@ XXXXX
 重启过后 www.site.com ---> curl www.site1.cn
 
 
+#php 已安装扩展
+bcmath \
+calendar \
+Core \
+ctype \
+curl \
+date \
+dom \
+exif \
+fileinfo \
+filter \
+ftp \
+gd \
+gettext \
+hash \
+iconv \
+json \
+libxml \
+mbstring \
+memcached \
+mongodb \
+mysqlnd \
+openssl \
+pcntl \
+pcre \
+PDO \
+pdo_mysql \
+pdo_pgsql \
+pdo_sqlite \
+Phar \
+posix \
+readline \
+redis \
+Reflection \
+session \
+shmop \
+SimpleXML \
+soap \
+sockets \
+sodium \
+SPL \
+sqlite3 \
+standard \
+swoole \
+sysvmsg \
+sysvsem \
+sysvshm \
+tokenizer \
+wddx \
+xdebug \
+xml \
+xmlreader \
+xmlrpc \
+xmlwriter \
+xsl \
+Zend OPcache \
+zip \
+zlib \
+[Zend Modules] \
+Xdebug \
+Zend OPcache
+
+
 ## 容器相关命令管理
 
 1. 查看运行的容器
