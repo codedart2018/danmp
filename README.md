@@ -54,6 +54,22 @@ docker-compose up -d   //创建容器
 XXXXX
 ```
 
+#关于PHP CURL
+配置php72 or php56 里的extra_host 关于IP 在.evn的配置里
+```
+    extra_hosts:
+      - "www.wu.cn:192.168.176.3"
+      - "www.spread.cn:192.168.176.3"
+      - "shop.du.cn:192.168.176.3"
+      - "www.lease.cn:192.168.176.3"
+```
+每次修改后执行
+```
+    docker-compose restart
+```
+重启过后 www.site.com ---> curl www.site1.cn
+
+
 ## 容器相关命令管理
 
 1. 查看运行的容器
