@@ -1,6 +1,6 @@
 # 使用 Docker 快速搭建 danmp 环境
 
-运行环境集成了apache + nginx + mysql + php
+运行环境集成了apache + nginx + mysql + redis + php(5.6/7.2)
 
 ### 目录结构
 
@@ -20,13 +20,18 @@ log 日志目录
     --- php-fpm php-fpm日志目录
 
 www    网站的根目录
-docker-compose.yml  容器的编排工具
+docker-compose.yml  容器的编译文件
 .evn   变量文件
 
 ```
 
-### 第一步，获取项目代码
+### php7.2.11 dockerfile 编译文件
+[链接地址](https://gitee.com/myxingke/php7.2.11-dockerfile "链接地址")
 
+### php5.6.38 dockerfile 编译文件
+[链接地址](https://gitee.com/myxingke/php5.6.38-dockerfile "链接地址")
+
+### 第一步，获取项目代码
 ```
 git clone https://gitee.com/myxingke/danmp.git
 ```
@@ -59,12 +64,13 @@ XXXXX
 
 ### 关于PHP CURL
 配置php72 or php56 里的extra_host 关于IP 在.evn的配置里
+指定ip为当前运行的apache nginx IP
 ```
     extra_hosts:
-      - "www.wu.cn:192.168.176.3"
-      - "www.spread.cn:192.168.176.3"
-      - "shop.du.cn:192.168.176.3"
-      - "www.lease.cn:192.168.176.3"
+      - "www.wu.cn:172.100.0.2"
+      - "www.spread.cn:172.100.0.2"
+      - "shop.du.cn:172.100.0.2"
+      - "www.lease.cn:172.100.0.2"
 ```
 每次修改后执行
 ```
@@ -79,12 +85,43 @@ fastcgi_pass   php72:9000; 换成php5.6版本 fastcgi_pass   php56:9000;
 fastcgi_pass   fpm56:9000; 换成php72版本  fastcgi_pass   fpm72:9000;
 ```
 
-### MYSQL 初始密码
+### MYSQL
+程序连接方式
 ```
-root root
+- host：(本项目的MySQL容器网络，默认mysql)
+- port：`3306`
+- username：`root`
+- password：`root`
+```
+
+工具连接方式
+```
+- host：127.0.0.1
+- port：`3306`
+- username：`root`
+- password：`root`
+```
+
+### REDIS
+程序连接方式
+```
+- host: redis
+- port: 6379
+```
+工具连接方式
+```
+- host: 127.0.0.1
+- port: 6379
+```
+
+### portainer
+portainer docker的gui管理工具
+```
+- localhost: 9000
 ```
 
 ### php 已安装扩展
+##### php5.6/7.2基本只有一两个扩展差距，如果觉得有差的你也可以提issues或者在上面提供的地址自己编译
 bcmath \
 calendar \
 Core \
@@ -146,12 +183,6 @@ zlib \
 Xdebug \
 Zend OPcache
 
-### php7.2.11 dockerfile 编译文件
-[链接地址](https://gitee.com/myxingke/php7.2.11-dockerfile "链接地址")
-
-### php5.6.38 dockerfile 编译文件
-[链接地址](https://gitee.com/myxingke/php5.6.38-dockerfile "链接地址")
-
 ## 容器相关命令管理
 
 1. 查看运行的容器
@@ -199,5 +230,3 @@ docker-compose exec php72 composer --version
 //使用php72服务的php命令行工具
 docker-compose exec php72 php -v  
 ```
-### portainer
-portainer docker的gui管理工具  （localhost:9000）
