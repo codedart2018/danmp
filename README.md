@@ -182,7 +182,7 @@ docker-compose exec apache bash
 
 ```
 //使用php72服务的composer命令
-暂未安装 请用compose容器服务
+docker-compose exec php72 composer --version
 //使用php72服务的php命令行工具
 docker-compose exec php72 php -v  
 ```
