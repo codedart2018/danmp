@@ -1,6 +1,14 @@
 # 使用 Docker 快速搭建 danmp 环境
 
-运行环境集成了apache + nginx + mysql + redis + php(5.6/7.2)
+运行环境集成了apache + nginx + mysql + redis + php(5.6/7.2) + composer + portainer：
+1. `100%`开源
+2. `100%`遵循Docker标准
+3. 支持**多版本PHP**共存，可任意切换（PHP5.6、PHP7.2)
+4. 支持绑定**任意多个域名**
+5. 支持**HTTPS和HTTP/2**
+6. 默认安装`pdo_mysql`、`redis`、`xdebug`、`swoole`等常用热门扩展，拿来即用
+7. 实际项目中应用，确保`100%`可用
+8. 一次配置，**Windows、Linux、MacOs**皆可用
 
 ### 目录结构
 
@@ -30,6 +38,8 @@ docker-compose.yml  容器的编译文件
 
 ### php5.6.38 dockerfile 编译文件
 [链接地址](https://gitee.com/myxingke/php5.6.38-dockerfile "链接地址")
+
+### 关于windows
 
 ### 第一步，获取项目代码
 ```
@@ -66,15 +76,15 @@ XXXXX
 配置php72 or php56 里的extra_host 关于IP 在.evn的配置里
 指定ip为当前运行的apache nginx IP
 ```
-    extra_hosts:
-      - "www.wu.cn:172.100.0.2"
-      - "www.spread.cn:172.100.0.2"
-      - "shop.du.cn:172.100.0.2"
-      - "www.lease.cn:172.100.0.2"
+extra_hosts:
+  - "www.wu.cn:172.100.0.2"
+  - "www.spread.cn:172.100.0.2"
+  - "shop.du.cn:172.100.0.2"
+  - "www.lease.cn:172.100.0.2"
 ```
 每次修改后执行
 ```
-    docker-compose restart
+docker-compose restart
 ```
 重启过后 www.site.com ---> curl www.site1.cn
 
