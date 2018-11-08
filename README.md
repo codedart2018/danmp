@@ -72,11 +72,17 @@ XXXXX
 ```
 重启过后 www.site.com ---> curl www.site1.cn
 
+### PHP 版本切换
+vhost配置文件里找到如下内容替换
+```
+fastcgi_pass   php72:9000; 换成php5.6版本 fastcgi_pass   php56:9000;
+fastcgi_pass   fpm56:9000; 换成php72版本  fastcgi_pass   fpm72:9000;
+```
+
 ### MYSQL 初始密码
 ```
 root root
 ```
-
 
 ### php 已安装扩展
 bcmath \
@@ -140,9 +146,11 @@ zlib \
 Xdebug \
 Zend OPcache
 
-### php dockerfile 编译文件
+### php7.2.11 dockerfile 编译文件
 [链接地址](https://gitee.com/myxingke/php7.2.11-dockerfile "链接地址")
 
+### php5.6.38 dockerfile 编译文件
+[链接地址](https://gitee.com/myxingke/php5.6.38-dockerfile "链接地址")
 
 ## 容器相关命令管理
 
