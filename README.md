@@ -72,6 +72,11 @@ XXXXX
 ```
 重启过后 www.site.com ---> curl www.site1.cn
 
+### MYSQL 初始密码
+```
+root root
+```
+
 
 ### php 已安装扩展
 bcmath \
