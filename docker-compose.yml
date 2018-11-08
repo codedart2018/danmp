@@ -53,6 +53,9 @@ services:
     links:
       - mysql:mysql
       - redis:redis
+    extra_hosts:
+      - "www.wu.cn:172.100.0.2"
+      - "shop.du.cn:172.100.0.2"
     networks:
       docker_net:
         ipv4_address: ${PHP72_IP}
@@ -123,5 +126,4 @@ networks:
     ipam:
       driver: default
       config:
-        -
-          subnet: "${DOCKER_SUBNET}"
+        - subnet: "${DOCKER_SUBNET}"
