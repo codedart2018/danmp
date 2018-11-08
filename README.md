@@ -56,7 +56,7 @@ cd danmp
 docker-compose up -d
 ```
 
-### 第四步，启动运行
+### 第四步，查看结果
 
 测试nginx：
 - http://localhost
