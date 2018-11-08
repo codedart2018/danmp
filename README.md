@@ -67,10 +67,7 @@ docker-compose up -d
 - https://localhost:4343
 
 如果访问出现以下内容，说明环境搭建成功成功后将会出现如下内容
-```markdown
-欢迎使用DANMP！
-XXXXX
-```
+![Demo Image](./images/demo1.png)
 
 ### 关于PHP CURL
 配置php72 or php56 里的extra_host 关于IP 在.evn的配置里
