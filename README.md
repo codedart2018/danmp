@@ -1,5 +1,9 @@
 # 使用 Docker 快速搭建 danmp 环境
 
+## 本项目不会更新在这里，更新放在gitee上的
+https://gitee.com/myxingke/danmp
+[点我啊](https://gitee.com/myxingke/danmp "链接地址")
+
 运行环境集成了apache + nginx + mysql + redis + php(5.6/7.2) + composer + portainer：
 1. `100%`开源
 2. `100%`遵循Docker标准
