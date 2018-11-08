@@ -6,12 +6,12 @@ services:
     container_name: 'apache_web'
     image: httpd:2.4
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"
+      - "4343:443"
 
     links:
       - php72:fpm72
-
+      - php56:fpm56
     volumes:
       - ${WORKSPACES}:/var/www/:rw
       - ./conf/apache/:/usr/local/apache2/conf/:rw
@@ -24,8 +24,9 @@ services:
     container_name: 'nginx_web'
     image: nginx:alpine
     ports:
-      - "8080:80"
-      - "4343:443"
+      - "80:80"
+      - "443:443"
+
     volumes:
       - ${WORKSPACES}:/var/www/html/:rw
       - ./conf/nginx/conf.d:/etc/nginx/conf.d/:ro
@@ -33,6 +34,7 @@ services:
       - ./log/nginx/:/var/log/nginx/:rw
     links:
       - php72:fpm72
+      - php56:fpm56
     environment:
       - TZ=Asia/Shanghai
     networks:
@@ -57,6 +59,24 @@ services:
     networks:
       docker_net:
         ipv4_address: ${PHP72_IP}
+
+  php56:
+    container_name: 'php56'
+    image: 5353920/php5.6.38:v1
+    expose:
+    - "9000"
+    - "9501"
+    volumes:
+    - ${WORKSPACES}:/var/www/:rw
+    - ./conf/php/php56.ini:/usr/local/etc/php/php.ini:ro
+    - ./conf/php/php-fpm.d/www56.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    - ./log/php-fpm/:/var/log/php-fpm/:rw
+    links:
+    - mysql:mysql
+    - redis:redis
+    networks:
+      docker_net:
+        ipv4_address: ${PHP56_IP}
 
   mysql:
     container_name: 'mysql'
